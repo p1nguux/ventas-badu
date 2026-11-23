@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Badulaque Groove · Ranking de Ventas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#070b1f;--card:#0d1432;--card2:#0a1030;--line:#2a3a80;--tx:#fff;--mut:#9db6ff;
+  --red:#e11d2e;--blue:#1e6bff;--blue2:#2f7bff;
+  --mk:"Permanent Marker","Rock Salt",Impact,"Arial Black",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh;
+  padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px);
+  background:
+   radial-gradient(circle at 6% 10%,rgba(225,29,46,.55) 0 46px,transparent 48px),
+   radial-gradient(circle at 94% 22%,rgba(30,107,255,.55) 0 58px,transparent 60px),
+   radial-gradient(circle at 88% 78%,rgba(225,29,46,.4) 0 40px,transparent 42px),
+   radial-gradient(circle at 10% 88%,rgba(30,107,255,.45) 0 52px,transparent 54px),
+   radial-gradient(900px 500px at 85% -10%,rgba(225,29,46,.28),transparent),
+   radial-gradient(900px 500px at 0% 0%,rgba(30,107,255,.3),transparent),
+   radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.5px) 0 0/16px 16px,
+   var(--bg);background-attachment:fixed}
+.wrap{max-width:1080px;margin:0 auto;padding:18px 16px 56px}
+.hero{position:relative;text-align:center;padding:10px 0 4px}
+.ltd{position:absolute;right:0;top:0;border:2px solid #fff;border-radius:8px;padding:2px 9px;background:#12307e;text-shadow:0 0 8px #5aa0ff;transform:rotate(4deg);line-height:1.1}
+.ltd b{display:block;font-family:var(--mk);font-size:1.1rem;color:#cfe1ff}
+.ltd small{display:block;color:#ff5a68;font-weight:800;font-size:.7rem;letter-spacing:1px;text-shadow:0 0 8px #e11d2e}
+.kicker{font-family:var(--mk);letter-spacing:2px;font-size:.95rem;margin:0 0 -4px;text-shadow:2px 2px 0 var(--red)}
+h1{margin:0;font-family:var(--mk);font-weight:400;text-transform:uppercase;line-height:.95;font-size:clamp(2.3rem,9vw,3.8rem);transform:rotate(-2deg);
+  text-shadow:2px 2px 0 var(--red),-2px -2px 0 var(--red),2px -2px 0 var(--red),-2px 2px 0 var(--red),5px 6px 0 #000}
+h1 em{display:block;font-style:italic;color:var(--blue2);margin-top:2px;
+  text-shadow:2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff,5px 6px 0 var(--red)}
+.tag{display:inline-block;margin-top:14px;background:var(--red);color:#fff;font-family:var(--mk);padding:4px 14px;border:2px solid #fff;border-radius:6px;transform:rotate(1.5deg);letter-spacing:1px;text-transform:uppercase;box-shadow:3px 3px 0 #000}
+.drip{height:26px;margin:2px -16px 18px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='26' viewBox='0 0 120 26'><path d='M0 0H120V8H112V20a4 4 0 0 1-8 0V8H70V14a3 3 0 0 1-6 0V8H40V24a4 4 0 0 1-8 0V8H14V16a3 3 0 0 1-6 0V8H0Z' fill='%23e11d2e'/></svg>") repeat-x top left/120px 26px}
+.layout{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:26px;align-items:start}
+.previewcol{position:sticky;top:16px}
+@media(max-width:960px){.layout{grid-template-columns:1fr}.previewcol{position:static}.ltd{position:static;display:inline-block;margin-bottom:6px}}
+.card{background:var(--card);border:2px solid #fff;border-radius:14px;padding:18px 16px 6px;margin:26px 0 24px;box-shadow:6px 6px 0 var(--red)}
+.card:nth-of-type(even){box-shadow:6px 6px 0 var(--blue)}
+.card h2{display:inline-block;font-family:var(--mk);font-weight:400;font-size:1rem;text-transform:uppercase;letter-spacing:1px;background:var(--blue);border:2px solid #fff;padding:2px 12px;margin:-32px 0 14px -4px;transform:rotate(-2deg);box-shadow:2px 2px 0 #000}
+.field{margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.grid2{grid-template-columns:1fr;gap:0}}
+label{display:block;font-size:.74rem;color:var(--mut);margin:0 0 5px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+label .req{color:#ff5a68}
+input,select,textarea{width:100%;padding:11px 12px;border-radius:8px;border:2px solid var(--line);background:var(--card2);color:#fff;font-size:1rem;font-family:inherit;color-scheme:dark}
+textarea{min-height:90px;resize:vertical}
+select option{background:#0d1432}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#fff;box-shadow:0 0 0 3px var(--blue)}
+::placeholder{color:#6f7fa8}
+button{cursor:pointer;border:2px solid #fff;border-radius:8px;padding:12px 16px;font-family:var(--mk);text-transform:uppercase;letter-spacing:.8px;font-size:1rem;color:#fff;background:var(--red);box-shadow:3px 3px 0 #000}
+button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #000}
+button:disabled{opacity:.6;cursor:wait}
+.submit{width:100%;font-size:1.15rem;padding:15px}
+.dl{display:none;margin-top:12px;background:var(--blue)}
+#msg{margin-top:16px;padding:12px 14px;border-radius:10px;font-size:.9rem;display:none;line-height:1.5;border:2px solid #fff}
+#msg.ok{display:block;background:rgba(30,107,255,.3)}
+#msg.err{display:block;background:rgba(225,29,46,.3)}
+.prevlabel{font-family:var(--mk);letter-spacing:2px;text-transform:uppercase;font-size:.9rem;color:var(--mut);margin:26px 0 12px;text-align:center}
+.slipfit{overflow-x:auto;padding:4px 8px 14px}
+footer{text-align:center;color:var(--mut);font-size:.75rem;margin-top:28px;letter-spacing:1.5px}
+
+.layout{grid-template-columns:minmax(0,1fr) 640px}
+@media(max-width:1180px){.layout{grid-template-columns:1fr}.previewcol{position:static}}
+.dates{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.emp-head,.emp-row{display:grid;grid-template-columns:1.6fr .8fr 1fr 44px;gap:10px;align-items:center}
+.emp-head{font-size:.68rem;font-weight:800;color:var(--mut);letter-spacing:1px;text-transform:uppercase;padding:0 2px 6px}
+.emp-row{margin-bottom:10px}
+.del{padding:0;height:44px;background:var(--red)}
+.btn2{margin:6px 8px 12px 0}
+.alt{background:var(--blue)}.light{background:#fff;color:#0a1030}.ghost{background:transparent;box-shadow:none;border-color:#6b7bc0;color:#cfd8ff}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.actions button{flex:1 1 150px}
+@media(max-width:640px){.emp-head{display:none}.emp-row{grid-template-columns:1fr 1fr;padding:12px;border:2px solid var(--line);border-radius:10px;background:var(--card2)}.emp-row>:first-child{grid-column:1/-1}.del{width:100%}.dates{grid-template-columns:1fr}}
+.fit{overflow-x:auto;padding:4px 8px 14px}
+/* ===== TARJETA RANKING ===== */
+#rank{width:600px;margin:0 auto;position:relative;overflow:hidden;background:#070b1f;color:#fff;border:3px solid #fff;border-radius:14px;box-shadow:6px 6px 0 var(--red);
+  background-image:radial-gradient(circle at 96% 5%,rgba(30,107,255,.45) 0 46px,transparent 48px),radial-gradient(circle at 3% 98%,rgba(225,29,46,.4) 0 40px,transparent 42px),radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.5px);background-size:auto,auto,16px 16px}
+#rank .r-stripe{height:12px;background:repeating-linear-gradient(-45deg,#e11d2e 0 16px,#fff 16px 32px,#1e6bff 32px 48px)}
+#rank .r-head{display:flex;align-items:center;gap:14px;padding:18px 24px 6px}
+#rank .r-logo{width:58px;height:58px;flex:none;display:grid;place-items:center;font-family:var(--mk);font-size:22px;background:linear-gradient(135deg,#e11d2e 0 50%,#1e6bff 50% 100%);border:3px solid #fff;border-radius:12px;transform:rotate(-4deg);box-shadow:3px 3px 0 #000}
+#rank .r-title small{display:block;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#9db6ff;font-weight:800}
+#rank .r-title b{display:block;margin-top:4px;font-family:var(--mk);font-weight:400;font-size:32px;text-transform:uppercase;line-height:1;transform:rotate(-1.5deg);text-shadow:2px 2px 0 #e11d2e,4px 5px 0 #000}
+#rank .r-title b i{font-style:italic;color:#2f7bff;text-shadow:2px 2px 0 #fff,4px 5px 0 #e11d2e}
+#rank .r-range{margin:12px 24px 16px;text-align:center}
+#rank .r-range span{display:inline-block;background:#e11d2e;border:2px solid #fff;border-radius:6px;padding:4px 14px;font-family:var(--mk);letter-spacing:1px;font-size:14px;text-transform:uppercase;transform:rotate(1deg);box-shadow:3px 3px 0 #000}
+#rank .r-list{padding:0 24px}
+#rank .r-row{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;padding:10px 14px;margin-bottom:10px;border-radius:10px;background:#0d1432;border:2px solid #2a3a80}
+#rank .r-row.p1{border-color:#ffc233;box-shadow:3px 3px 0 #ffc233}
+#rank .r-row.p2{border-color:#c8d0e0;box-shadow:3px 3px 0 #c8d0e0}
+#rank .r-row.p3{border-color:#d68545;box-shadow:3px 3px 0 #d68545}
+#rank .r-pos{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:var(--mk);font-size:19px;background:#16275a;border:2px solid #34498f}
+#rank .p1 .r-pos{background:#ffc233;color:#3d2a00;border-color:#fff2c4}
+#rank .p2 .r-pos{background:#c8d0e0;color:#1b2540;border-color:#fff}
+#rank .p3 .r-pos{background:#d68545;color:#3a1c05;border-color:#ffd9b8}
+#rank .r-name{font-weight:800;font-size:16px;word-break:break-word;line-height:1.2}
+#rank .r-bar{height:8px;border-radius:4px;background:rgba(255,255,255,.1);margin-top:7px;overflow:hidden}
+#rank .r-bar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#1e6bff,#8fb8ff)}
+#rank .p1 .r-bar i{background:linear-gradient(90deg,#e11d2e,#ff5a68)}
+#rank .r-val{text-align:right;font-family:var(--mk);font-size:22px;line-height:1.1;white-space:nowrap}
+#rank .r-val small{display:block;font-family:system-ui,sans-serif;font-size:11px;color:#9db6ff;font-weight:700;margin-top:3px;letter-spacing:.5px}
+#rank .r-empty{text-align:center;color:#9db6ff;padding:30px 10px 34px;font-size:14px}
+#rank .r-tot{display:flex;gap:10px;margin:8px 24px 18px}
+#rank .r-tot div{flex:1;text-align:center;padding:10px 6px;border-radius:10px;background:#e11d2e;border:2px solid #fff;box-shadow:3px 3px 0 #000}
+#rank .r-tot div:nth-child(even){background:#1e6bff}
+#rank .r-tot small{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800;color:#ffe3e6}
+#rank .r-tot div:nth-child(even) small{color:#dbe8ff}
+#rank .r-tot b{display:block;font-family:var(--mk);font-weight:400;font-size:20px;margin-top:2px}
+#rank .r-bar2{display:flex;justify-content:space-between;align-items:center;padding:8px 24px;background:#e11d2e;color:#fff;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:800}
+#rank .barcode{height:16px;width:130px;background:repeating-linear-gradient(90deg,#fff 0 2px,transparent 2px 4px,#fff 4px 5px,transparent 5px 8px,#fff 8px 11px,transparent 11px 13px)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="ltd"><b>LTD</b><small>24/7</small></div>
+    <div class="kicker">★ Bienvenido a ★</div>
+    <h1>Badulaque <em>Groove</em></h1>
+    <div class="tag">Ranking de ventas</div>
+  </header>
+  <div class="drip"></div>
+
+  <div class="layout">
+    <div>
+      <section class="card">
+        <h2>Semana</h2>
+        <div class="dates">
+          <div class="field"><label for="d1">Desde</label><input type="date" id="d1"></div>
+          <div class="field"><label for="d2">Hasta</label><input type="date" id="d2"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Empleados y ventas</h2>
+        <div class="emp-head" id="head"><span>Nombre</span><span>Facturas</span><span>Total generado</span><span></span></div>
+        <div id="rows"></div>
+        <button class="btn2" id="add" type="button">＋ Añadir empleado</button>
+      </section>
+
+      <section class="card">
+        <h2>Exportar</h2>
+        <div class="actions">
+          <button class="light" id="copy" type="button">Copiar texto</button>
+          <button class="alt" id="dl" type="button">Descargar imagen</button>
+          <button id="send" type="button">Enviar a Discord</button>
+          <button class="ghost" id="clear" type="button">Limpiar todo</button>
+        </div>
+        <div id="msg"></div>
+      </section>
+    </div>
+
+    <div class="previewcol">
+      <p class="prevlabel">★ Vista previa del ranking ★</p>
+      <div class="fit">
+        <div id="rank">
+          <div class="r-stripe"></div>
+          <div class="r-head">
+            <div class="r-logo">BG</div>
+            <div class="r-title"><small>Badulaque Groove</small><b>Ranking de <i>Ventas</i></b></div>
+          </div>
+          <div class="r-range"><span id="r-range">Selecciona las fechas</span></div>
+          <div class="r-list" id="r-list"></div>
+          <div class="r-tot" id="r-tot"></div>
+          <div class="r-bar2"><span>Badulaque Groove · Ventas semanales</span><div class="barcode"></div></div>
+          <div class="r-stripe"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>BADULAQUE GROOVE · RANKING DE VENTAS</footer>
+</div>
+
+<script>
+  // Webhook del canal de Discord donde quieres enviar el ranking (opcional).
+  const WEBHOOK_URL = "";
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const fmtISO = iso => { if (!iso) return '--/--/----'; const [y, m, d] = iso.split('-'); return d + '/' + m + '/' + y; };
+  const money = n => new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 }).format(Math.round(n)) + ' $';
+  const medals = ['🥇', '🥈', '🥉'];
+  const blank = () => ({ name: '', inv: '', total: '' });
+  let state = { d1: '', d2: '', emps: [blank()] };
+
+  function drawRows() {
+    $('rows').innerHTML = state.emps.map((e, i) => `
+      <div class="emp-row" data-i="${i}">
+        <input type="text" data-f="name" placeholder="Nombre y apellido" autocomplete="off" value="${esc(e.name)}">
+        <input type="number" data-f="inv" min="0" step="1" inputmode="numeric" placeholder="Nº" value="${esc(e.inv)}">
+        <input type="number" data-f="total" min="0" step="any" inputmode="decimal" placeholder="$ Total" value="${esc(e.total)}">
+        <button class="del" type="button" data-del title="Eliminar">✕</button>
+      </div>`).join('');
+  }
+
+  const num = v => { const n = parseFloat(String(v).replace(',', '.')); return isNaN(n) ? 0 : n; };
+  const sorted = () => state.emps.filter(e => e.name.trim()).map(e => ({ name: e.name.trim(), inv: Math.round(num(e.inv)), total: num(e.total) })).sort((a, b) => b.total - a.total || b.inv - a.inv);
+  const fac = n => n + ' factura' + (n === 1 ? '' : 's');
+  const sums = list => { const t = list.reduce((s, e) => s + e.total, 0), f = list.reduce((s, e) => s + e.inv, 0); return { t, f, m: f ? t / f : 0 }; };
+
+  function render() {
+    $('r-range').textContent = state.d1 && state.d2 ? 'Del ' + fmtISO(state.d1) + ' al ' + fmtISO(state.d2) : 'Selecciona las fechas';
+    const list = sorted();
+    if (!list.length) { $('r-list').innerHTML = '<div class="r-empty">Añade empleados para ver el ranking</div>'; $('r-tot').innerHTML = ''; return; }
+    const max = Math.max(...list.map(e => e.total)) || 1;
+    $('r-list').innerHTML = list.map((e, i) => `
+      <div class="r-row ${i < 3 ? 'p' + (i + 1) : ''}">
+        <div class="r-pos">${i + 1}</div>
+        <div><div class="r-name">${esc(e.name)}</div><div class="r-bar"><i style="width:${Math.max(3, e.total / max * 100)}%"></i></div></div>
+        <div class="r-val">${money(e.total)}<small>${fac(e.inv)}</small></div>
+      </div>`).join('');
+    const s = sums(list);
+    $('r-tot').innerHTML = '<div><small>Total generado</small><b>' + money(s.t) + '</b></div><div><small>Facturas</small><b>' + s.f + '</b></div><div><small>Ticket medio</small><b>' + money(s.m) + '</b></div>';
+  }
+
+  function summaryText() {
+    const list = sorted(), s = sums(list);
+    let t = '🏆 **RANKING DE VENTAS — BADULAQUE GROOVE**\n📅 Del ' + fmtISO(state.d1) + ' al ' + fmtISO(state.d2) + '\n\n';
+    list.forEach((e, i) => { t += (medals[i] || '`' + (i + 1) + '.`') + ' **' + e.name + '** — ' + money(e.total) + ' · ' + fac(e.inv) + '\n'; });
+    return t + '\n💰 **Total generado:** ' + money(s.t) + ' · **Facturas:** ' + s.f + ' · **Ticket medio:** ' + money(s.m);
+  }
+
+  function show(type, text) { const m = $('msg'); m.className = type; m.textContent = text; m.style.display = 'block'; }
+  async function makeImage() {
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    const canvas = await html2canvas($('rank'), { scale: 2, backgroundColor: '#070b1f', useCORS: true, logging: false });
+    return await new Promise(res => canvas.toBlob(res, 'image/png'));
+  }
+
+  $('d1').addEventListener('change', e => { state.d1 = e.target.value; render(); });
+  $('d2').addEventListener('change', e => { state.d2 = e.target.value; render(); });
+  $('add').addEventListener('click', () => { state.emps.push(blank()); drawRows(); render(); });
+  $('rows').addEventListener('input', e => {
+    const row = e.target.closest('.emp-row'); if (!row) return;
+    state.emps[+row.dataset.i][e.target.dataset.f] = e.target.value; render();
+  });
+  $('rows').addEventListener('click', e => {
+    if (!e.target.closest('[data-del]')) return;
+    state.emps.splice(+e.target.closest('.emp-row').dataset.i, 1);
+    if (!state.emps.length) state.emps.push(blank());
+    drawRows(); render();
+  });
+  $('clear').addEventListener('click', () => {
+    if (!confirm('¿Borrar todos los empleados y datos de esta semana?')) return;
+    state = { d1: '', d2: '', emps: [blank()] }; $('d1').value = ''; $('d2').value = ''; drawRows(); render();
+  });
+  $('copy').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(summaryText()); show('ok', '✅ Texto copiado. Pégalo en Discord.'); }
+    catch (e) { show('err', 'No se pudo copiar automáticamente.'); }
+  });
+  $('dl').addEventListener('click', async () => {
+    try {
+      const blob = await makeImage();
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+      a.download = 'ranking-ventas-' + (state.d1 || 'semana') + '.png'; a.click();
+    } catch (e) { show('err', 'No se pudo generar la imagen.'); }
+  });
+  $('send').addEventListener('click', async () => {
+    if (!WEBHOOK_URL) return show('err', 'Falta configurar WEBHOOK_URL en el archivo. Mientras tanto, descarga la imagen y súbela a mano.');
+    if (!sorted().length) return show('err', 'Añade al menos un empleado con nombre.');
+    const b = $('send'); b.disabled = true; b.textContent = 'Enviando...';
+    try {
+      const blob = await makeImage();
+      const fd = new FormData();
+      fd.append('payload_json', JSON.stringify({ embeds: [{ color: 0xE11D2E, image: { url: 'attachment://ranking.png' } }] }));
+      fd.append('files[0]', blob, 'ranking.png');
+      const r = await fetch(WEBHOOK_URL, { method: 'POST', body: fd });
+      if (!r.ok) throw new Error(r.status);
+      show('ok', '✅ Ranking enviado al canal.');
+    } catch (e) { show('err', 'No se pudo enviar. Descarga la imagen y súbela a mano.'); }
+    finally { b.disabled = false; b.textContent = 'Enviar a Discord'; }
+  });
+
+  drawRows(); render();
+</script>
+</body>
+</html>
